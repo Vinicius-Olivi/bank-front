@@ -1,0 +1,30 @@
+a,
+p,
+li {
+  color: #fff;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+header,
+footer {
+  background-color: #42145f;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+}
+
+main {
+  margin: 20px 0;
+  background-color: #a8e2e8;
+  text-align: center;
+}
+
+.services {
+  text-align: center;
+  align-items: center;
+}
+
+.services ul {
+  list-style-type: none;
+}
