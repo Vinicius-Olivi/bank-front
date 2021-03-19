@@ -2,6 +2,8 @@ import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router";
 import { getServiceDetails } from "../services/serv.service";
 import Loading from "../components/loading/index";
+import List from "../components/clientList/index";
+import Client from "../components/clientService/index";
 
 const Details = (props) => {
   const { id } = useParams();
@@ -40,8 +42,11 @@ const Details = (props) => {
   return (
     <div>
       <h1>Detalhamento do servico</h1>
-
       {loading ? <Loading /> : detailsPrint(details)}
+      <hr />
+      <Client />
+      <hr />
+      <List clients={details.subscriptions} />
     </div>
   );
 };
