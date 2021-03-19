@@ -2,12 +2,11 @@ import React from "react";
 import Footer from "./footer";
 import Header from "./header";
 
-const Layout = ({ children, name }) => {
-  document.title = name;
+const Layout = ({ children }) => {
   return (
     <div>
-      <Header name={name} />
-      <main>{children}</main>
+      <Header />
+      <main className="container">{children}</main>
       <Footer />
     </div>
   );

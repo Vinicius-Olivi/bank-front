@@ -1,41 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router";
 import { getServiceDetails } from "../services/serv.service";
+import Loading from "../components/loading/index";
 
-const oneSec = 1000;
-
-const Details = () => {
+const Details = (props) => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [details, setDetails] = useState({});
+  const oneSec = 1000;
 
-  useEffect(() => {
-    setLoading(true);
-    const getDetails = async () => {
+  const getDetails = useCallback(async () => {
+    try {
+      setLoading(true);
       const res = await getServiceDetails(id);
       setTimeout(() => {
         setDetails(res.data);
         setLoading(false);
       }, oneSec);
-    };
+    } catch (error) {
+      props.history.push("/?error=404");
+    }
+  }, [id, props]);
+
+  useEffect(() => {
     getDetails();
-  }, [id]);
+  }, [getDetails]);
+
+  const detailsPrint = (details) => (
+    <div className="details">
+      <p>
+        <strong>Name: </strong> {details.name}
+      </p>
+      <p>
+        <strong>Coordinator: </strong> {details.coordinator}
+      </p>
+    </div>
+  );
 
   return (
     <div>
       <h1>Detalhamento do servico</h1>
-      {loading ? (
-        <h2>Loading...</h2>
-      ) : (
-        <div className="details">
-          <p>
-            <strong>Name: </strong> {details.name}
-          </p>
-          <p>
-            <strong>Coordinator: </strong> {details.coordinator}
-          </p>
-        </div>
-      )}
+
+      {loading ? <Loading /> : detailsPrint(details)}
     </div>
   );
 };

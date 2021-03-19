@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-const Header = (props) => {
+const Header = () => {
   return (
     <div>
-      <header>
-        <h1>Bank {props.name}</h1>
+      <header className="container">
+        <h1>Bank S/A</h1>
         <ul>
           <li>
             <Link to="/">Home</Link>
