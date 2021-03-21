@@ -1,6 +1,19 @@
+import { useParams } from "react-router";
+import { deleteServiceClient } from "../../services/serv.service";
 import "./style.css";
 
-const List = ({ clients }) => {
+const List = ({ clients, update }) => {
+  const { id: id_service } = useParams();
+
+  const deleteClient = (id_client) => {
+    deleteServiceClient(id_service, id_client)
+      .then(() => {
+        alert(`Client deleted! `);
+        update(true);
+      })
+      .catch((error) => console.log("an error happened.."));
+  };
+
   return (
     <div>
       {clients && clients.length ? (
@@ -10,16 +23,21 @@ const List = ({ clients }) => {
               <th>Name</th>
               <th>Birth</th>
               <th>Email</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {clients.map((v, i) => (
-              <tr>
-                <td>{v.name}</td>
-                <td>{new Date(v.data_nascimento).toLocaleDateString()}</td>
-                <td>{v.email}</td>
-              </tr>
-            ))}
+            {clients &&
+              clients.map((v, i) => (
+                <tr key={i}>
+                  <td>{v.name}</td>
+                  <td>{new Date(v.data_nascimento).toLocaleDateString()}</td>
+                  <td>{v.email}</td>
+                  <td>
+                    <button onClick={() => deleteClient(v.id)}>Delete</button>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       ) : (

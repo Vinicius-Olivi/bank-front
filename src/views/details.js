@@ -7,26 +7,27 @@ import Client from "../components/clientService/index";
 
 const Details = (props) => {
   const { id } = useParams();
+  const { history } = props;
+
   const [loading, setLoading] = useState(false);
   const [details, setDetails] = useState({});
-  const oneSec = 1000;
+  const [update, setUpdate] = useState(false);
 
   const getDetails = useCallback(async () => {
     try {
       setLoading(true);
       const res = await getServiceDetails(id);
-      setTimeout(() => {
-        setDetails(res.data);
-        setLoading(false);
-      }, oneSec);
+      setDetails(res.data);
+      setLoading(false);
     } catch (error) {
-      props.history.push("/?error=404");
+      history.push("/?error=404");
     }
-  }, [id, props]);
+  }, [id, history]);
 
   useEffect(() => {
     getDetails();
-  }, [getDetails]);
+    setUpdate(false);
+  }, [getDetails, update]);
 
   const detailsPrint = (details) => (
     <div className="details">
@@ -44,9 +45,9 @@ const Details = (props) => {
       <h1>Detalhamento do servico</h1>
       {loading ? <Loading /> : detailsPrint(details)}
       <hr />
-      <Client />
+      <Client id={id} update={setUpdate} />
       <hr />
-      <List clients={details.subscriptions} />
+      <List clients={details.subscriptions} update={setUpdate} />
     </div>
   );
 };

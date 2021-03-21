@@ -1,0 +1,25 @@
+header {
+  /* height: 80px; */
+  background-color: #42145f;
+  display: flex;
+  color: #fff;
+  align-items: center;
+  justify-content: space-around;
+}
+
+header ul {
+  justify-content: center;
+}
+header ul li {
+  display: inline-block;
+  align-items: center;
+  color: #fff;
+  padding: 20px;
+  font-size: 30px;
+}
+
+header ul li a {
+  color: #fff;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 500;
+}

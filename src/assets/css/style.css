@@ -15,9 +15,9 @@ footer {
 }
 
 main {
-  margin: 20px 0;
-  background-color: #a8e2e8;
+  background-color: #ccc;
   text-align: center;
+  padding-bottom: 50px;
 }
 
 .services {
@@ -27,4 +27,8 @@ main {
 
 .services ul {
   list-style-type: none;
+}
+
+footer {
+  align-items: center;
 }
