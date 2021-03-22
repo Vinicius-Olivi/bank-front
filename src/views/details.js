@@ -35,7 +35,10 @@ const Details = (props) => {
         <strong>Name: </strong> {details.name}
       </p>
       <p>
-        <strong>Coordinator: </strong> {details.coordinator}
+        <strong>Manager: </strong> {details.manager}
+      </p>
+      <p>
+        <strong>Description: </strong> {details.description}
       </p>
     </div>
   );

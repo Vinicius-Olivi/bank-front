@@ -21,8 +21,9 @@ const List = ({ clients, update }) => {
           <thead>
             <tr>
               <th>Name</th>
-              <th>Birth</th>
               <th>Email</th>
+              <th>Adress</th>
+              <th>Value</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -30,9 +31,10 @@ const List = ({ clients, update }) => {
             {clients &&
               clients.map((v, i) => (
                 <tr key={i}>
-                  <td>{v.name}</td>
-                  <td>{new Date(v.data_nascimento).toLocaleDateString()}</td>
-                  <td>{v.email}</td>
+                  <td>{v.client_name}</td>
+                  <td>{v.client_email}</td>
+                  <td>{v.client_address}</td>
+                  <td>{v.value}</td>
                   <td>
                     <button onClick={() => deleteClient(v.id)}>Delete</button>
                   </td>
