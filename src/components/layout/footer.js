@@ -5,24 +5,22 @@ import { FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div>
-      <Sfooter className="container">
-        <div className="footer_icons">
-          <a href="https://www.facebook.com">
-            {" "}
-            <FaFacebook />
-          </a>
-          <a href="https://www.instagram.com">
-            {" "}
-            <FaInstagram />
-          </a>
-          <a href="https://www.twitter.com">
-            {" "}
-            <FaTwitter />
-          </a>
-        </div>
-      </Sfooter>
-    </div>
+    <Sfooter>
+      <div className="footer_icons">
+        <a href="https://www.facebook.com">
+          {" "}
+          <FaFacebook />
+        </a>
+        <a href="https://www.instagram.com">
+          {" "}
+          <FaInstagram />
+        </a>
+        <a href="https://www.twitter.com">
+          {" "}
+          <FaTwitter />
+        </a>
+      </div>
+    </Sfooter>
   );
 };
 
@@ -37,13 +35,24 @@ const Sfooter = styled.footer`
   background-color: #42145f;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: center;
   color: #fff;
 
   a {
-    font-size: 60px;
-    margin: 20px auto;
+    font-size: 40px;
+    padding-bottom: 40px;
     color: #fff;
+  }
+  @media (max-width: 929px) {
+    width: 100%;
+    height: 60px;
+    position: relative;
+    top: 3%;
+    justify-content: center;
+    a {
+      font-size: 30px;
+      padding: 0px 10px;
+    }
   }
 `;

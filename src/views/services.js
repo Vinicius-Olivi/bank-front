@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
 import { getBankAllServices } from "../services/serv.service";
+import { Row, Col } from "reactstrap";
+import CardItem from "../components/services/card_item";
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -18,9 +19,13 @@ const Services = () => {
 
   const mappingServices = (services) =>
     services.map((item, i) => (
-      <li key={i}>
-        <Link to={`/details/${item.id}`}>{item.name}</Link>
-      </li>
+      <Col md="6" xl="6" sm="12" xs="12" key={i} className="mb-4">
+        <CardItem item={{ ...item, status: i > 2 }} />
+      </Col>
+
+      // <li className="box" key={i}>
+      //   <Link to={`/details/${item.id}`}>{item.name}</Link>
+      // </li>
     ));
 
   return (
@@ -30,10 +35,8 @@ const Services = () => {
           <p>⚠️ Ops...</p> <p>An error happened!</p>
         </div>
       ) : (
-        <ul>{mappingServices(services)}</ul>
+        <Row>{mappingServices(services)}</Row>
       )}
-
-      <hr />
     </div>
   );
 };

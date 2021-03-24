@@ -10,10 +10,12 @@ import {
   NavLink,
   Container,
   Tooltip,
+  NavbarText,
 } from "reactstrap";
 import styled from "styled-components";
 import "../../assets/css/style.css";
-import { GiTakeMyMoney } from "react-icons/gi";
+// import { GiTakeMyMoney } from "react-icons/gi";
+import { FaJediOrder } from "react-icons/fa";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,8 +38,8 @@ const Header = () => {
             Back to Services
           </Tooltip>
           {/* <div className="logo"> */}
-
           <LogoIcon />
+          TechnoBank
           {/* </div> */}
         </SNavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -65,6 +67,9 @@ const Header = () => {
                 </SNavLink>
               </NavItem>
             </Nav>
+            <SNavbarText>
+              <h6>Think Different!</h6>
+            </SNavbarText>
           </Collapse>
         </Container>
       </SNavbar>
@@ -78,7 +83,10 @@ const SNavbar = styled(Navbar)`
   height: 80px;
   width: 100%;
   background-color: #42145f !important;
-  position: fixed;
+`;
+
+const SNavbarText = styled(NavbarText)`
+  color: #fff !important;
 `;
 
 const SNavLink = styled(NavLink)`
@@ -100,8 +108,8 @@ const SNavbarBrand = styled(NavbarBrand)`
   color: #fff !important;
 `;
 
-const LogoIcon = styled(GiTakeMyMoney)`
+const LogoIcon = styled(FaJediOrder)`
   width: 60px;
   height: 60px;
-  margin: 0px 0px 0px 60px;
+  margin-left: 60px;
 `;
