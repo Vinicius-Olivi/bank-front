@@ -27,29 +27,32 @@ const Client = ({ id, update }) => {
         {" "}
         <input
           type="text"
-          value={form.client_name || ""}
+          value={form.name || ""}
           onChange={handleChange}
           name="name"
-          placeholder="Your name"
-          autofocus
+          placeholder="name: "
+          autoFocus
+          required
         />
       </p>
       <p>
         <input
           type="email"
-          value={form.client_email || ""}
+          value={form.email || ""}
           onChange={handleChange}
           name="email"
-          placeholder="Your email"
+          placeholder="email: "
+          required
         />
       </p>
       <p>
         <input
           type="text"
-          value={form.client_address || ""}
+          value={form.address || ""}
           onChange={handleChange}
-          name="data_nascimento"
-          placeholder="Your address"
+          name="address"
+          placeholder="address: "
+          required
         />
       </p>
       <p>
@@ -57,8 +60,10 @@ const Client = ({ id, update }) => {
           type="number"
           value={form.value || ""}
           onChange={handleChange}
-          name="client_value"
-          placeholder="Proposed value £"
+          name="value"
+          placeholder="Proposed value: £"
+          min="0"
+          required
         />
       </p>
       <br />

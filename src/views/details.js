@@ -19,7 +19,10 @@ const Details = (props) => {
       const res = await getServiceDetails(id);
       setDetails(res.data);
       setLoading(false);
+      //testando o erro
+      console.log(details);
     } catch (error) {
+      console.log("error catch");
       history.push("/?error=404");
     }
   }, [id, history]);
@@ -45,12 +48,12 @@ const Details = (props) => {
 
   return (
     <div>
-      <h1>Detalhamento do servico</h1>
+      <h1>Service detail:</h1>
       {loading ? <Loading /> : detailsPrint(details)}
       <hr />
       <Client id={id} update={setUpdate} />
       <hr />
-      <List clients={details.subscriptions} update={setUpdate} />
+      <List clients={details.clients} update={setUpdate} />
     </div>
   );
 };

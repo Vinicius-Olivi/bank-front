@@ -1,34 +1,7 @@
-a,
-p,
-li {
-  color: #fff;
-  text-decoration: none;
-  list-style-type: none;
-}
-
-header,
-footer {
-  background-color: #42145f;
-  padding: 10px;
-  color: #fff;
-  text-align: center;
-}
-
-main {
-  background-color: #ccc;
-  text-align: center;
-  padding-bottom: 50px;
-}
-
-.services {
-  text-align: center;
-  align-items: center;
-}
-
-.services ul {
-  list-style-type: none;
-}
-
-footer {
-  align-items: center;
-}
+/* .logo {
+  width: 60px !important;
+  height: 60px !important;
+  margin: 10px 100px 10px 14px;
+  background-color: #fff !important;
+  border-radius: 50%;
+} */
