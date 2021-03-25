@@ -38,8 +38,11 @@ const Header = () => {
             Back to Services
           </Tooltip>
           {/* <div className="logo"> */}
-          <LogoIcon />
-          TechnoBank
+          <div className="logo_menu">
+            <img src="/images/logo.svg" alt="" />
+            {/* <LogoIcon /> */}
+            {/* TechnoBank */}
+          </div>
           {/* </div> */}
         </SNavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -67,11 +70,11 @@ const Header = () => {
                 </SNavLink>
               </NavItem>
             </Nav>
-            <SNavbarText>
-              <h6>Think Different!</h6>
-            </SNavbarText>
           </Collapse>
         </Container>
+        <SNavbarText>
+          <h6>Think Different!</h6>
+        </SNavbarText>
       </SNavbar>
     </header>
   );
@@ -81,12 +84,22 @@ export default Header;
 
 const SNavbar = styled(Navbar)`
   height: 80px;
-  width: 100%;
+  min-width: 100%;
   background-color: #42145f !important;
+  .logo_menu {
+    margin-left: 65px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+  .container {
+    margin-left: 60px;
+    justify-content: space-around;
+  }
 `;
 
 const SNavbarText = styled(NavbarText)`
   color: #fff !important;
+  margin-right: 100px !important;
 `;
 
 const SNavLink = styled(NavLink)`
@@ -108,8 +121,8 @@ const SNavbarBrand = styled(NavbarBrand)`
   color: #fff !important;
 `;
 
-const LogoIcon = styled(FaJediOrder)`
-  width: 60px;
-  height: 60px;
-  margin-left: 60px;
-`;
+// const LogoIcon = styled(FaJediOrder)`
+//   width: 60px;
+//   height: 60px;
+//   margin-left: 60px;
+// `;

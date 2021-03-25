@@ -61,7 +61,7 @@ const Client = ({ id, update }) => {
           value={form.value || ""}
           onChange={handleChange}
           name="value"
-          placeholder="Proposed value: £"
+          placeholder="Requested amount: £"
           min="0"
           required
         />

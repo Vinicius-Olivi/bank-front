@@ -19,16 +19,10 @@ const CardItem = (props) => {
 
   return (
     <SCard>
-      <CardBody>
-        <CardTitle tag="h5">{name}</CardTitle>
-        <IsService isFalse={true} />
-        <Button
-          tag={Link}
-          to={`/details/${id}`}
-          size="sm"
-          color="info"
-          href="#"
-        >
+      <CardBody size="xl">
+        <CardTitle tag="h4">{name}</CardTitle>
+        <IsService isFalse={status} />
+        <Button tag={Link} to={`/details/${id}`} size="sm" color="info">
           More information...
         </Button>
       </CardBody>
@@ -41,6 +35,7 @@ const SCard = styled(Card)`
   /* background-color: rgb(66, 20, 95, 0.1); */
   background-color: rgb(206, 59, 87, 0.1);
   color: #42145f;
+  margin-top: 20px;
 
   :hover {
     background-color: rgb(206, 59, 87, 0.3);
