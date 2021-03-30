@@ -1,15 +1,22 @@
 import { Link } from "react-router-dom";
-import { Card, CardBody, CardTitle, CardSubtitle, Button } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Button,
+  Container,
+} from "reactstrap";
 import styled from "styled-components";
 
 const CardItem = (props) => {
-  const { name, id, status } = props.item;
+  const { name, id, status, manager } = props.item;
 
   const IsService = ({ isFalse }) => {
     if (isFalse) {
       return (
         <CardSubtitle tag="h6" className="mb-2 text-muted">
-          Services
+          Manager: {manager}
         </CardSubtitle>
       );
     } else {
@@ -18,15 +25,17 @@ const CardItem = (props) => {
   };
 
   return (
-    <SCard>
-      <CardBody size="xl">
-        <CardTitle tag="h4">{name}</CardTitle>
-        <IsService isFalse={status} />
-        <Button tag={Link} to={`/details/${id}`} size="sm" color="info">
-          More information...
-        </Button>
-      </CardBody>
-    </SCard>
+    <Container container-fluid>
+      <SCard>
+        <CardBody size="md">
+          <CardTitle tag="h4">{name}</CardTitle>
+          <IsService isFalse={status} />
+          <Button tag={Link} to={`/details/${id}`} size="sm" color="info">
+            More information...
+          </Button>
+        </CardBody>
+      </SCard>
+    </Container>
   );
 };
 export default CardItem;

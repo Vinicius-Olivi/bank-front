@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router";
 import { getServiceDetails } from "../services/serv.service";
+import { Button, Jumbotron, Nav, Navbar } from "reactstrap";
 import Loading from "../components/loading/index";
 import List from "../components/clientList/index";
 import Client from "../components/clientService/index";
@@ -12,6 +13,7 @@ const Details = (props) => {
   const [loading, setLoading] = useState(false);
   const [details, setDetails] = useState({});
   const [update, setUpdate] = useState(false);
+  const [isClient, setClient] = useState(true);
 
   const getDetails = useCallback(async () => {
     try {
@@ -32,30 +34,43 @@ const Details = (props) => {
     setUpdate(false);
   }, [getDetails, update]);
 
-  const detailsPrint = (details) => (
-    <div className="details">
-      <p>
-        <strong>Name: </strong> {details.name}
+  const detailsService = ({ name, manager }) => (
+    <Jumbotron>
+      <div className="display-4">{name}</div>
+      <p className="lead">
+        <strong>Manager: </strong> {manager}
       </p>
-      <p>
-        <strong>Manager: </strong> {details.manager}
-      </p>
-      <p>
-        <strong>Description: </strong> {details.description}
-      </p>
+    </Jumbotron>
+  );
+
+  const Menu = () => (
+    <Navbar color="none" expand="md mb-4">
+      <Nav className="mr-auto" navbar>
+        <Button
+          onClick={() => setClient(!isClient)}
+          color={!isClient ? "info" : "info"}
+          size="sm"
+        >
+          {!isClient ? "Client List" : "Add new"}
+        </Button>
+      </Nav>
+    </Navbar>
+  );
+
+  const mountScreen = (details) => (
+    <div>
+      {detailsService(details)}
+      {Menu()}
+
+      {isClient ? (
+        <Client id={id} update={setUpdate} />
+      ) : (
+        <List clients={details.clients} update={setUpdate} />
+      )}
     </div>
   );
 
-  return (
-    <div>
-      <h1>Service detail:</h1>
-      {loading ? <Loading /> : detailsPrint(details)}
-      <hr />
-      <Client id={id} update={setUpdate} />
-      <hr />
-      <List clients={details.clients} update={setUpdate} />
-    </div>
-  );
+  return loading ? <Loading /> : mountScreen(details);
 };
 
 export default Details;

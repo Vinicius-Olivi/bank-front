@@ -8,7 +8,7 @@ import Loading from "../components/loading/index";
 const Services = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [hasError, setError] = useState(false);
+  // const [hasError, setError] = useState(false);
 
   const getServices = useCallback(() => {
     setLoading(true);
@@ -17,7 +17,10 @@ const Services = () => {
         setServices(res.data);
         setLoading(false);
       })
-      .catch((err) => setLoading(false));
+      .catch((err) => {
+        console.log("error alert");
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -27,23 +30,24 @@ const Services = () => {
   //mount services
   const mappingServices = (services) =>
     services.map((item, i) => (
-      <Col md="6" xl="6" sm="12" xs="12" key={i} className="mb-4">
+      <Col container md="6" xl="6" sm="12" xs="12" key={i} className="mb-4">
         <CardItem item={{ ...item, status: true }} />
       </Col>
     ));
 
   return (
     <BoxServices>
-      {hasError ? (
+      {/* {hasError ? (
         <div>
           <p>⚠️ Ops...</p> <p>An error happened!</p>
         </div>
-      ) : (
-        <div>
+      ) : ( */}
+      <div>
+        <Jumbotron container-fluid>
           <div className="jumbo">
             <SContainer container-fluid>
               <div className="info_bg">
-                <h1>Bank S/A</h1>
+                <h1>TechnoBank</h1>
                 <p>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                   Illum magni facere architecto fugiat iste at error laudantium
@@ -54,13 +58,17 @@ const Services = () => {
                   Architecto.
                 </p>
               </div>
-              <img src="/images/bg_md.svg" alt="" />
+              {/* hidden img */}
+              <img
+                className="d-none d-lg-block"
+                src="/images/bg_md.svg"
+                alt=""
+              />
             </SContainer>
-            {/* </SJumbotron> */}
-            <Row>{mappingServices(services)}</Row>
+            <Row>{loading ? <Loading /> : mappingServices(services)} </Row>
           </div>
-        </div>
-      )}
+        </Jumbotron>
+      </div>
     </BoxServices>
   );
 };
@@ -71,15 +79,26 @@ const BoxServices = styled(Row)``;
 
 const SContainer = styled(Container)`
   display: flex;
-  @media (max-width: 929px) {
-    img {
-      display: none;
-    }
+  margin-top: 25px;
+
+  
   }
   .info_bg {
     text-align: center;
-    width: 400px;
+    width: 800px;
     p {
     }
+    @media (max-width: 929px) {
+    img {
+      /* position: absolute; */
+      margin: 100px;
+    }
+    &.info_bg {
+    width: auto;
+    text-align: justify;
+    margin: 40px 0; //arrumando os cards deve arrumar aqui
+    h1{
+      text-align: center;
+    }} 
   }
 `;

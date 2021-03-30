@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { FaFacebook } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
+import { FaGitlab } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -19,6 +21,14 @@ const Footer = () => {
           {" "}
           <FaTwitter />
         </a>
+        <a href="https://www.gitlab.com">
+          {" "}
+          <FaGitlab />
+        </a>
+        <a href="https://www.linkedin.com">
+          {" "}
+          <FaLinkedin />
+        </a>
       </div>
     </Sfooter>
   );
@@ -28,6 +38,16 @@ export default Footer;
 
 const Sfooter = styled.footer`
   position: fixed;
+  height: 100vh;
+  width: 72px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, #42145f 10%, #62145f 200%);
+  left: 0;
+  top: 0;
+  padding: 11px;
+
+  /* position: fixed;
   width: 80px;
   height: 100%;
   left: 0%;
@@ -37,21 +57,36 @@ const Sfooter = styled.footer`
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  color: #fff;
+  color: #fff; */
+  .footer_icons {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 72px;
+    justify-content: center;
+    align-items: center;
+  }
 
   a {
-    font-size: 40px;
-    padding-bottom: 40px;
+    font-size: 30px;
+    padding-bottom: 10px;
     color: #fff;
   }
   @media (max-width: 929px) {
     width: 100%;
-    height: 60px;
+    /* height: 72px; */
     position: relative;
-    top: 3%;
+    /* top: 92vh; */
     justify-content: center;
+    align-items: center;
+    .footer_icons {
+      width: 100%;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+
     a {
-      font-size: 30px;
+      font-size: 25px;
       padding: 0px 10px;
     }
   }

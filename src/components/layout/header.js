@@ -15,7 +15,7 @@ import {
 import styled from "styled-components";
 import "../../assets/css/style.css";
 // import { GiTakeMyMoney } from "react-icons/gi";
-import { FaJediOrder } from "react-icons/fa";
+// import { FaJediOrder } from "react-icons/fa";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <header>
-      <SNavbar color="light" light expand="md">
+      <SNavbar color="dark" dark expand="md">
         <SNavbarBrand tag={RRDNavLink} to="/" id="logoHeader">
           <Tooltip
             placement="top"
@@ -45,7 +45,7 @@ const Header = () => {
           </div>
           {/* </div> */}
         </SNavbarBrand>
-        <NavbarToggler onClick={toggle} />
+        <NavbarToggler ligth onClick={toggle} />
         <Container>
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
@@ -72,7 +72,7 @@ const Header = () => {
             </Nav>
           </Collapse>
         </Container>
-        <SNavbarText>
+        <SNavbarText className="d-xs-none d-sm-block ">
           <h6>Think Different!</h6>
         </SNavbarText>
       </SNavbar>
@@ -83,18 +83,30 @@ const Header = () => {
 export default Header;
 
 const SNavbar = styled(Navbar)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  position: fixed;
+  background: linear-gradient(90deg, #42145f 10%, #62145f 200%) !important;
+  top: 0;
+  width: 100%;
   height: 80px;
+  z-index: 100;
+
+  /* height: 80px;
   min-width: 100%;
-  background-color: #42145f !important;
+  background: linear-gradient(90deg, #42145f 10%, #62145f 200%) !important;
   .logo_menu {
     margin-left: 65px;
     background-color: #fff;
     border-radius: 50%;
+    display: none;
   }
   .container {
-    margin-left: 60px;
+    margin-left: 160px;
     justify-content: space-around;
-  }
+  } */
 `;
 
 const SNavbarText = styled(NavbarText)`
@@ -108,17 +120,26 @@ const SNavLink = styled(NavLink)`
   font-family: "Montserrat";
   font-weight: 500;
   text-transform: uppercase;
-  padding: 29px 0;
+  padding: 26px 0;
 
   &.active {
     color: #42145f !important;
-    background-color: #fff;
-    border-radius: 5px;
+    background-color: #fff !important;
+  }
+
+  @media (max-width: 929px) {
+    display: flex;
+    align-items: center;
+    height: 80px;
   }
 `;
 
 const SNavbarBrand = styled(NavbarBrand)`
   color: #fff !important;
+  .logo_menu {
+    background-color: #fff;
+    border-radius: 50%;
+  }
 `;
 
 // const LogoIcon = styled(FaJediOrder)`
