@@ -1,10 +1,11 @@
 import { useEffect, useState, useCallback } from "react";
 import { useParams } from "react-router";
 import { getServiceDetails } from "../services/serv.service";
-import { Button, Jumbotron, Nav, Navbar } from "reactstrap";
+import { Button, Col, Container, Jumbotron, Nav, Navbar } from "reactstrap";
 import Loading from "../components/loading/index";
 import List from "../components/clientList/index";
 import Client from "../components/clientService/index";
+import styled from "styled-components";
 
 const Details = (props) => {
   const { id } = useParams();
@@ -35,12 +36,12 @@ const Details = (props) => {
   }, [getDetails, update]);
 
   const detailsService = ({ name, manager }) => (
-    <Jumbotron>
+    <SJumbotron>
       <div className="display-4">{name}</div>
       <p className="lead">
         <strong>Manager: </strong> {manager}
       </p>
-    </Jumbotron>
+    </SJumbotron>
   );
 
   const Menu = () => (
@@ -58,7 +59,7 @@ const Details = (props) => {
   );
 
   const mountScreen = (details) => (
-    <div>
+    <DetailsAll responsive>
       {detailsService(details)}
       {Menu()}
 
@@ -67,10 +68,26 @@ const Details = (props) => {
       ) : (
         <List clients={details.clients} update={setUpdate} />
       )}
-    </div>
+    </DetailsAll>
   );
 
   return loading ? <Loading /> : mountScreen(details);
 };
 
 export default Details;
+
+const SJumbotron = styled(Jumbotron)`
+  /* margin: 30px -50px 0 0; */
+`;
+
+const DetailsAll = styled.div`
+  width: 100%;
+  margin-left: 72px;
+  align-items: center;
+  justify-content: center;
+  background-color: #5f5;
+
+  @media (max-width: 930px) {
+    margin-left: 0;
+  }
+`;

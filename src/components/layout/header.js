@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <header>
-      <SNavbar color="dark" dark expand="md">
+      <SNavbar color="dark" dark expand="sm">
         <SNavbarBrand tag={RRDNavLink} to="/" id="logoHeader">
           <Tooltip
             placement="top"
@@ -72,7 +72,7 @@ const Header = () => {
             </Nav>
           </Collapse>
         </Container>
-        <SNavbarText className="d-xs-none d-sm-block ">
+        <SNavbarText>
           <h6>Think Different!</h6>
         </SNavbarText>
       </SNavbar>
@@ -94,6 +94,9 @@ const SNavbar = styled(Navbar)`
   height: 80px;
   z-index: 100;
 
+  @media (max-width: 769px) {
+    justify-content: space-between;
+  }
   /* height: 80px;
   min-width: 100%;
   background: linear-gradient(90deg, #42145f 10%, #62145f 200%) !important;
@@ -112,6 +115,9 @@ const SNavbar = styled(Navbar)`
 const SNavbarText = styled(NavbarText)`
   color: #fff !important;
   margin-right: 100px !important;
+  @media (max-width: 769px) {
+    display: none;
+  } ;
 `;
 
 const SNavLink = styled(NavLink)`
@@ -125,12 +131,6 @@ const SNavLink = styled(NavLink)`
   &.active {
     color: #42145f !important;
     background-color: #fff !important;
-  }
-
-  @media (max-width: 929px) {
-    display: flex;
-    align-items: center;
-    height: 80px;
   }
 `;
 

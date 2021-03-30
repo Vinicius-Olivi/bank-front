@@ -46,7 +46,6 @@ const Sfooter = styled.footer`
   left: 0;
   top: 0;
   padding: 11px;
-
   /* position: fixed;
   width: 80px;
   height: 100%;
@@ -72,7 +71,7 @@ const Sfooter = styled.footer`
     color: #fff;
   }
   @media (max-width: 929px) {
-    width: 100%;
+    min-width: 100%;
     /* height: 72px; */
     position: relative;
     /* top: 92vh; */

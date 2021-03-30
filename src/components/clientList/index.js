@@ -9,6 +9,7 @@ import {
   ModalBody,
   ModalFooter,
 } from "reactstrap";
+import styled from "styled-components";
 
 const List = ({ clients, update }) => {
   const { id: id_service } = useParams();
@@ -36,15 +37,15 @@ const List = ({ clients, update }) => {
     <div>
       {clients && clients.length ? (
         <div>
-          <Table>
+          <Table responsive>
             <thead>
-              <tr>
+              <TableHeader>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Adress</th>
                 <th>Value</th>
                 <th>Action</th>
-              </tr>
+              </TableHeader>
             </thead>
             <tbody>
               {clients &&
@@ -92,3 +93,9 @@ const List = ({ clients, update }) => {
 };
 
 export default List;
+
+const TableHeader = styled.tr`
+  th:nth-child(1) {
+    min-width: 100px;
+  }
+`;
