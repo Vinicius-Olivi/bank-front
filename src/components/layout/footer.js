@@ -70,9 +70,9 @@ const Sfooter = styled.footer`
     padding-bottom: 10px;
     color: #fff;
   }
-  @media (max-width: 929px) {
+  @media (max-width: 1059px) {
     min-width: 100%;
-    /* height: 72px; */
+    height: 72px;
     position: relative;
     /* top: 92vh; */
     justify-content: center;

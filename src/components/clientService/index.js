@@ -1,6 +1,15 @@
 import { useState } from "react";
 import { createServiceClient } from "../../services/serv.service";
-import { FormGroup, Label, Input, Button, Row, Col } from "reactstrap";
+import {
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Row,
+  Col,
+  Nav,
+  Navbar,
+} from "reactstrap";
 import styled from "styled-components";
 
 const Client = ({ id, update }) => {
@@ -78,9 +87,13 @@ const Client = ({ id, update }) => {
           />
         </SFormGroup>
         <SFormGroup>
-          <Button onClick={submit} size="sm" color="info">
-            Submit
-          </Button>
+          <Navbar color="none" expand="md mb-4">
+            <Nav className="mr-auto" navbar>
+              <Button onClick={submit} size="sm" color="info">
+                Submit
+              </Button>
+            </Nav>
+          </Navbar>
         </SFormGroup>
       </Col>
     </FormClient>

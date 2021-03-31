@@ -25,22 +25,23 @@ const CardItem = (props) => {
   };
 
   return (
-    <Container container-fluid>
+    <SContainer container-fluid>
       <SCard>
-        <CardBody size="md">
+        <SCardBody size="md">
           <CardTitle tag="h4">{name}</CardTitle>
           <IsService isFalse={status} />
           <Button tag={Link} to={`/details/${id}`} size="sm" color="info">
             More information...
           </Button>
-        </CardBody>
+        </SCardBody>
       </SCard>
-    </Container>
+    </SContainer>
   );
 };
 export default CardItem;
 
 const SCard = styled(Card)`
+  max-width: 100%;
   /* background-color: rgb(66, 20, 95, 0.1); */
   background-color: rgb(206, 59, 87, 0.1);
   color: #42145f;
@@ -50,5 +51,19 @@ const SCard = styled(Card)`
     background-color: rgb(206, 59, 87, 0.3);
     /* background-color: rgb(66, 20, 95, 0.4); */
     transition: 0.4s;
+  }
+`;
+
+const SContainer = styled(Container)`
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const SCardBody = styled(CardBody)`
+  min-width: 500px;
+  @media (max-width: 549px) {
+    min-width: 300px !important;
+    background-color: #000;
   }
 `;

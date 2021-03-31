@@ -52,7 +52,7 @@ const Details = (props) => {
           color={!isClient ? "info" : "info"}
           size="sm"
         >
-          {!isClient ? "Client List" : "Add new"}
+          {!isClient ? "Add new" : "Client List"}
         </Button>
       </Nav>
     </Navbar>
@@ -77,7 +77,9 @@ const Details = (props) => {
 export default Details;
 
 const SJumbotron = styled(Jumbotron)`
-  /* margin: 30px -50px 0 0; */
+  background-color: rgb(206, 59, 87, 0.1);
+  text-align: center;
+  /* background-color: #fff; */
 `;
 
 const DetailsAll = styled.div`
@@ -85,8 +87,6 @@ const DetailsAll = styled.div`
   margin-left: 72px;
   align-items: center;
   justify-content: center;
-  background-color: #5f5;
-
   @media (max-width: 930px) {
     margin-left: 0;
   }

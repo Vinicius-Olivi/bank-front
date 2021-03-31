@@ -36,17 +36,12 @@ const Services = () => {
     ));
 
   return (
-    <BoxServices>
-      {/* {hasError ? (
-        <div>
-          <p>⚠️ Ops...</p> <p>An error happened!</p>
-        </div>
-      ) : ( */}
-      <div>
-        <Jumbotron container-fluid>
-          <div className="jumbo">
-            <SContainer container-fluid>
-              <div className="info_bg">
+    <div>
+      <SJumbotron container-fluid>
+        <div className="jumbo">
+          <SContainer container-fluid>
+            <div className="info_bg">
+              <div className="text_bg">
                 <h1>TechnoBank</h1>
                 <p>
                   Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -58,47 +53,74 @@ const Services = () => {
                   Architecto.
                 </p>
               </div>
-              {/* hidden img */}
-              <img
-                className="d-none d-lg-block"
-                src="/images/bg_md.svg"
-                alt=""
-              />
-            </SContainer>
-            <Row>{loading ? <Loading /> : mappingServices(services)} </Row>
-          </div>
-        </Jumbotron>
-      </div>
-    </BoxServices>
+              <div className="img_bg">
+                <img src="/images/bg_md.svg" alt="" />
+              </div>
+            </div>
+          </SContainer>
+          <Boxes>{loading ? <Loading /> : mappingServices(services)}</Boxes>
+        </div>
+      </SJumbotron>
+    </div>
   );
 };
 
 export default Services;
 
-const BoxServices = styled(Row)``;
+const SJumbotron = styled(Row)`
+  max-width: 100%;
+  /* height: 90vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  overflow: hidden;
+`;
+const Boxes = styled.div`
+  max-width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+`;
 
 const SContainer = styled(Container)`
-  display: flex;
-  margin-top: 25px;
-
-  
+display: flex;
   }
   .info_bg {
     text-align: center;
-    width: 800px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
     p {
+      width: 100%;
+      text-align: justify;
     }
-    @media (max-width: 929px) {
-    img {
-      /* position: absolute; */
-      margin: 100px;
+
+    .text_bg{
+      width: 50%;
+      padding: 10px;
     }
-    &.info_bg {
-    width: auto;
-    text-align: justify;
-    margin: 40px 0; //arrumando os cards deve arrumar aqui
-    h1{
-      text-align: center;
-    }} 
+    .img_bg {
+      display: flex;
+      width: 50%;
+      justify-content: center;
+    }
   }
+  //Responsive
+  @media (max-width: 991px) {
+    img {
+     display: none;
+     }
+    .img_bg {
+      display: none;
+    }
+    .text_bg{
+    min-width: 100%;
+    margin-top: 20px;
+    text-align: justify;
+    align-items: center;
+  }
+  h1{
+      text-align: center;
+    }
 `;

@@ -96,6 +96,6 @@ export default List;
 
 const TableHeader = styled.tr`
   th:nth-child(1) {
-    min-width: 100px;
+    min-width: 200px;
   }
 `;
