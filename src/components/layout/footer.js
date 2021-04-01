@@ -46,17 +46,7 @@ const Sfooter = styled.footer`
   left: 0;
   top: 0;
   padding: 11px;
-  /* position: fixed;
-  width: 80px;
-  height: 100%;
-  left: 0%;
-  top: 0%;
-  background-color: #42145f;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  color: #fff; */
+
   .footer_icons {
     display: flex;
     flex-wrap: wrap;
@@ -74,7 +64,6 @@ const Sfooter = styled.footer`
     min-width: 100%;
     height: 72px;
     position: relative;
-    /* top: 92vh; */
     justify-content: center;
     align-items: center;
     .footer_icons {

@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import styled from "styled-components";
 
-const Client = ({ id, update }) => {
+const Client = ({ id, update, isForm }) => {
   const [form, setForm] = useState({});
 
   const handleChange = (e) => {
@@ -23,11 +23,17 @@ const Client = ({ id, update }) => {
   };
 
   const submit = () => {
-    createServiceClient(id, form)
+    const newForm = {
+      ...form,
+      name: form.name.toUpperCase(),
+      email: form.email.toLowerCase(),
+    };
+    createServiceClient(id, newForm)
       .then(() => {
         alert(`Client ${form.name} registered! `);
         setForm({});
         update(true);
+        isForm(false);
       })
       .catch((error) => console.log("an error happened"));
   };
@@ -36,7 +42,7 @@ const Client = ({ id, update }) => {
     <FormClient>
       <Col xs="12" sm="12" md="12" lg="12">
         <SFormGroup>
-          <Label for="name">Name:</Label>
+          {/* <Label for="name">Name:</Label> */}
           <Input
             type="text"
             name="name"
@@ -46,11 +52,12 @@ const Client = ({ id, update }) => {
             placeholder="name:"
             autoFocus
             required
+            className="text-uppercase"
           />
         </SFormGroup>
 
         <SFormGroup>
-          <Label for="email">Email:</Label>
+          {/* <Label for="email">Email:</Label> */}
           <Input
             type="email"
             name="email"
@@ -59,10 +66,11 @@ const Client = ({ id, update }) => {
             onChange={handleChange}
             placeholder="email:"
             required
+            className="text-lowercase"
           />
         </SFormGroup>
         <SFormGroup>
-          <Label for="address">Address:</Label>
+          {/* <Label for="address">Address:</Label> */}
           <Input
             type="text"
             name="address"
@@ -74,7 +82,7 @@ const Client = ({ id, update }) => {
           />
         </SFormGroup>
         <SFormGroup>
-          <Label for="value">Requested amount: £"</Label>
+          {/* <Label for="value">Requested amount: £"</Label> */}
           <Input
             type="number"
             name="value"
@@ -87,13 +95,9 @@ const Client = ({ id, update }) => {
           />
         </SFormGroup>
         <SFormGroup>
-          <Navbar color="none" expand="md mb-4">
-            <Nav className="mr-auto" navbar>
-              <Button onClick={submit} size="sm" color="info">
-                Submit
-              </Button>
-            </Nav>
-          </Navbar>
+          <Button onClick={submit} size="sm" color="info">
+            Submit
+          </Button>
         </SFormGroup>
       </Col>
     </FormClient>

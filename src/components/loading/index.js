@@ -16,7 +16,6 @@ const LoadingBox = styled.div`
   height: 60vh;
   justify-content: center;
   align-items: center;
-  background-color: #eee;
 `;
 
 const SpinLoading = keyframes`

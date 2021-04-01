@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { getBankAllServices } from "../services/serv.service";
-import { Row, Col, Container, Jumbotron } from "reactstrap";
+import { Row, Col, Container } from "reactstrap";
 import CardItem from "../components/services/card_item";
 import styled from "styled-components";
 import Loading from "../components/loading/index";
@@ -8,7 +8,6 @@ import Loading from "../components/loading/index";
 const Services = () => {
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const [hasError, setError] = useState(false);
 
   const getServices = useCallback(() => {
     setLoading(true);
@@ -69,12 +68,14 @@ export default Services;
 
 const SJumbotron = styled(Row)`
   max-width: 100%;
-  /* height: 90vh; */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: 30px 0 0 72px; // because footer has 72px
   overflow: hidden;
+  @media (max-width: 1059px) {
+    margin: 0 auto;
+  }
 `;
 const Boxes = styled.div`
   max-width: 100%;

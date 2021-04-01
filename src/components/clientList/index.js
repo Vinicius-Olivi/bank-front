@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useParams } from "react-router";
 import { deleteServiceClient } from "../../services/serv.service";
+import { FaTrashAlt } from "react-icons/fa";
+
 import {
   Button,
   Table,
@@ -8,11 +10,14 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  // Tooltip,
 } from "reactstrap";
 import styled from "styled-components";
 
 const List = ({ clients, update }) => {
   const { id: id_service } = useParams();
+  // const [tooltip, setTooltip] = useState(false);
+
   const [modal, setModal] = useState({ isOpen: false, data: null });
 
   const deleteClient = () => {
@@ -33,24 +38,26 @@ const List = ({ clients, update }) => {
     });
   };
 
+  // const toogleTolltip = () => setTooltip(!tooltip);
+
   return (
     <div>
       {clients && clients.length ? (
         <div>
-          <Table responsive>
+          <STable responsive striped size="sm">
             <thead>
-              <TableHeader>
+              <TableTr>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Adress</th>
                 <th>Value</th>
                 <th>Action</th>
-              </TableHeader>
+              </TableTr>
             </thead>
             <tbody>
               {clients &&
                 clients.map((v, i) => (
-                  <tr key={i}>
+                  <TableTr key={i}>
                     <td>{v.client_name}</td>
                     <td>{v.client_email}</td>
                     <td>{v.client_address}</td>
@@ -58,20 +65,33 @@ const List = ({ clients, update }) => {
                     <td>
                       <Button
                         size="sm"
-                        color="danger"
+                        color="link"
+                        // id={`tooltip_${v.id}`}
+                        className="text-danger"
                         onClick={() => toggleModal(v)}
                       >
-                        Delete
+                        <FaTrashAlt />
                       </Button>
+
+                      {/* <Tooltip
+                        placement={"bottom"}
+                        isOpen={tooltip}
+                        target={`tooltip_${v.id}`}
+                        toggle={toogleTolltip}
+                      >
+                        Delete Client!
+                      </Tooltip> */}
                     </td>
-                  </tr>
+                  </TableTr>
                 ))}
             </tbody>
-          </Table>
+          </STable>
           <Modal isOpen={modal.isOpen} toggle={toggleModal}>
             <ModalHeader toggle={toggleModal}>Delete client</ModalHeader>
             <ModalBody>
-              Do you want delete {modal?.data?.client_name} ?
+              {/* esta pegando somente a primeira letra */}
+              Do you want delete{" "}
+              <strong>{modal?.data?.client_name?.split()[0]}</strong> ?
             </ModalBody>
             <ModalFooter>
               <Button color="info" onClick={deleteClient}>
@@ -94,8 +114,44 @@ const List = ({ clients, update }) => {
 
 export default List;
 
-const TableHeader = styled.tr`
-  th:nth-child(1) {
-    min-width: 200px;
+const STable = styled(Table)`
+  overflow: hidden;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+`;
+
+const TableTr = styled.tr`
+  th {
+    background-color: rgb(206, 59, 87, 0.2);
+    :nth-child(n) {
+      min-width: 200px;
+    }
+    :nth-child(1) {
+      min-width: 250px;
+    }
+    :nth-child(2) {
+      min-width: 300px;
+    }
+    :nth-child(3) {
+      min-width: 200px;
+    }
+    :nth-child(4) {
+      min-width: 100px;
+    }
+    :nth-child(5) {
+      min-width: 10px;
+    }
+  }
+  td {
+    :nth-child(1) {
+      text-transform: uppercase;
+    }
+    :nth-child(2) {
+      text-transform: lowercase;
+    }
+    :nth-child(5) {
+      text-align: center;
+    }
   }
 `;

@@ -64,6 +64,5 @@ const SCardBody = styled(CardBody)`
   min-width: 500px;
   @media (max-width: 549px) {
     min-width: 300px !important;
-    background-color: #000;
   }
 `;

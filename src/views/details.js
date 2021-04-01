@@ -1,7 +1,9 @@
-import { useEffect, useState, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getServiceDetails } from "../services/serv.service";
-import { Button, Col, Container, Jumbotron, Nav, Navbar } from "reactstrap";
+import { Button, Jumbotron } from "reactstrap";
+import { FaUserPlus, FaRegListAlt } from "react-icons/fa";
+
 import Loading from "../components/loading/index";
 import List from "../components/clientList/index";
 import Client from "../components/clientService/index";
@@ -22,22 +24,28 @@ const Details = (props) => {
       const res = await getServiceDetails(id);
       setDetails(res.data);
       setLoading(false);
-      //testando o erro
+      //try error
       console.log(details);
     } catch (error) {
       console.log("error catch");
       history.push("/?error=404");
     }
-  }, [id, history]);
+  }, [id, history]); //something wrong
 
   useEffect(() => {
     getDetails();
     setUpdate(false);
   }, [getDetails, update]);
 
-  const detailsService = ({ name, manager }) => (
+  const detailsService = ({ name, manager, description }) => (
     <SJumbotron>
-      <div className="display-4">{name}</div>
+      <div className="display-4">
+        <h1>{name}</h1>
+      </div>
+
+      <p className="lead">
+        <h4>{description}</h4>
+      </p>
       <p className="lead">
         <strong>Manager: </strong> {manager}
       </p>
@@ -45,16 +53,25 @@ const Details = (props) => {
   );
 
   const Menu = () => (
-    <Navbar color="none" expand="md mb-4">
-      <Nav className="mr-auto" navbar>
-        <Button
-          onClick={() => setClient(!isClient)}
-          color={!isClient ? "info" : "info"}
-          size="sm"
-        >
-          {!isClient ? "Add new" : "Client List"}
-        </Button>
-      </Nav>
+    <Navbar expand="md mb-4">
+      <div className="info_button">
+        {isClient ? "Insert your info: " : "All clients in this service:"}
+      </div>
+      <SButton
+        onClick={() => setClient(!isClient)}
+        color={!isClient ? "info" : "info"}
+        size="md"
+      >
+        {!isClient ? (
+          <>
+            <FaUserPlus />
+          </>
+        ) : (
+          <>
+            <FaRegListAlt />
+          </>
+        )}
+      </SButton>
     </Navbar>
   );
 
@@ -64,7 +81,7 @@ const Details = (props) => {
       {Menu()}
 
       {isClient ? (
-        <Client id={id} update={setUpdate} />
+        <Client id={id} update={setUpdate} isForm={setClient} />
       ) : (
         <List clients={details.clients} update={setUpdate} />
       )}
@@ -76,12 +93,25 @@ const Details = (props) => {
 
 export default Details;
 
+const Navbar = styled.div`
+  display: flex;
+  margin: 10px 0 30px;
+  padding: 10px 0;
+  font-family: "Roboto", sans-serif;
+  .info_button {
+    flex: 1;
+  }
+`;
 const SJumbotron = styled(Jumbotron)`
-  background-color: rgb(206, 59, 87, 0.1);
+  /* background-color: rgb(206, 59, 87, 0.1);  */
   text-align: center;
-  /* background-color: #fff; */
+  background-color: #fff;
 `;
 
+const SButton = styled(Button)`
+  display: flex;
+  align-items: center;
+`;
 const DetailsAll = styled.div`
   width: 100%;
   margin-left: 72px;

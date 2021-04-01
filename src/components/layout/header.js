@@ -37,13 +37,9 @@ const Header = () => {
           >
             Back to Services
           </Tooltip>
-          {/* <div className="logo"> */}
           <div className="logo_menu">
             <img src="/images/logo.svg" alt="" />
-            {/* <LogoIcon /> */}
-            {/* TechnoBank */}
           </div>
-          {/* </div> */}
         </SNavbarBrand>
         <NavbarToggler ligth onClick={toggle} />
         <Container>
@@ -97,24 +93,11 @@ const SNavbar = styled(Navbar)`
   @media (max-width: 769px) {
     justify-content: space-between;
   }
-  /* height: 80px;
-  min-width: 100%;
-  background: linear-gradient(90deg, #42145f 10%, #62145f 200%) !important;
-  .logo_menu {
-    margin-left: 65px;
-    background-color: #fff;
-    border-radius: 50%;
-    display: none;
-  }
-  .container {
-    margin-left: 160px;
-    justify-content: space-around;
-  } */
 `;
 
 const SNavbarText = styled(NavbarText)`
   color: #fff !important;
-  margin-right: 100px !important;
+  margin-right: 150px !important;
   @media (max-width: 769px) {
     display: none;
   } ;
@@ -139,11 +122,6 @@ const SNavbarBrand = styled(NavbarBrand)`
   .logo_menu {
     background-color: #fff;
     border-radius: 50%;
+    margin-right: 50px;
   }
 `;
-
-// const LogoIcon = styled(FaJediOrder)`
-//   width: 60px;
-//   height: 60px;
-//   margin-left: 60px;
-// `;
