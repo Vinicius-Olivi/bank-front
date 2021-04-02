@@ -46,6 +46,7 @@ const SCard = styled(Card)`
   background-color: rgb(206, 59, 87, 0.1);
   color: #42145f;
   margin-top: 20px;
+  justify-content: center;
 
   :hover {
     background-color: rgb(206, 59, 87, 0.3);

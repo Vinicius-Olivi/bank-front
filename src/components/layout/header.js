@@ -43,7 +43,7 @@ const Header = () => {
         </SNavbarBrand>
         <NavbarToggler ligth onClick={toggle} />
         <Container>
-          <Collapse isOpen={isOpen} navbar>
+          <SCollapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
                 <SNavLink
@@ -66,7 +66,7 @@ const Header = () => {
                 </SNavLink>
               </NavItem>
             </Nav>
-          </Collapse>
+          </SCollapse>
         </Container>
         <SNavbarText>
           <h6>Think Different!</h6>
@@ -92,6 +92,30 @@ const SNavbar = styled(Navbar)`
 
   @media (max-width: 769px) {
     justify-content: space-between;
+  }
+`;
+
+const SCollapse = styled(Collapse)`
+  background: linear-gradient(
+    90deg,
+    rgb(66, 20, 95, 0.95) 10%,
+    #62145f 200%
+  ) !important;
+  /* background-color: rgb(66, 20, 95, 0.95); */
+  padding-left: 10px;
+
+  li {
+    .active {
+      color: #fff !important;
+      padding-left: 8px;
+      background-color: rgb(66, 20, 95, 0) !important;
+      font-weight: 600;
+    }
+  }
+  a {
+    font-family: "Montserrat", serif;
+    padding: 10px 0px;
+    margin-top: 10px;
   }
 `;
 

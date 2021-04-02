@@ -25,7 +25,6 @@ const Details = (props) => {
       setDetails(res.data);
       setLoading(false);
       //try error
-      console.log(details);
     } catch (error) {
       console.log("error catch");
       history.push("/?error=404");
@@ -39,13 +38,11 @@ const Details = (props) => {
 
   const detailsService = ({ name, manager, description }) => (
     <SJumbotron>
-      <div className="display-4">
+      <div className="title_details display-4">
         <h1>{name}</h1>
       </div>
 
-      <p className="lead">
-        <h4>{description}</h4>
-      </p>
+      <h4>{description}</h4>
       <p className="lead">
         <strong>Manager: </strong> {manager}
       </p>
@@ -103,9 +100,21 @@ const Navbar = styled.div`
   }
 `;
 const SJumbotron = styled(Jumbotron)`
-  /* background-color: rgb(206, 59, 87, 0.1);  */
   text-align: center;
   background-color: #fff;
+  .title_details {
+    margin-bottom: 20px;
+    font-size: 700;
+  }
+  h4 {
+    line-height: 30px;
+    font-family: "roboto", sans-serif;
+    font-weight: 300;
+    padding: 20px 0;
+    color: #17a2b8;
+  }
+  p {
+  }
 `;
 
 const SButton = styled(Button)`

@@ -13,6 +13,7 @@ import {
   // Tooltip,
 } from "reactstrap";
 import styled from "styled-components";
+import ReactSwal from "../../plugins/swal";
 
 const List = ({ clients, update }) => {
   const { id: id_service } = useParams();
@@ -24,7 +25,12 @@ const List = ({ clients, update }) => {
     if (modal.data.id) {
       deleteServiceClient(id_service, modal.data.id)
         .then(() => {
-          alert(`Client deleted! `);
+          ReactSwal.fire({
+            icon: "success",
+            title: `Client ${modal?.data?.client_name?.split()[0]} deleted! `,
+            showConfirmButton: false,
+            showCloseButton: true,
+          });
           update(true);
         })
         .catch((error) => console.log("an error happened.."));
@@ -50,7 +56,7 @@ const List = ({ clients, update }) => {
                 <th>Name</th>
                 <th>Email</th>
                 <th>Adress</th>
-                <th>Value</th>
+                <th>Amount</th>
                 <th>Action</th>
               </TableTr>
             </thead>
@@ -61,7 +67,7 @@ const List = ({ clients, update }) => {
                     <td>{v.client_name}</td>
                     <td>{v.client_email}</td>
                     <td>{v.client_address}</td>
-                    <td>{v.value}</td>
+                    <td>£ {v.value} </td>
                     <td>
                       <Button
                         size="sm"
@@ -89,7 +95,6 @@ const List = ({ clients, update }) => {
           <Modal isOpen={modal.isOpen} toggle={toggleModal}>
             <ModalHeader toggle={toggleModal}>Delete client</ModalHeader>
             <ModalBody>
-              {/* esta pegando somente a primeira letra */}
               Do you want delete{" "}
               <strong>{modal?.data?.client_name?.split()[0]}</strong> ?
             </ModalBody>
@@ -123,6 +128,7 @@ const STable = styled(Table)`
 
 const TableTr = styled.tr`
   th {
+    /* background-color: rgb(66, 20, 95, 0.2); */
     background-color: rgb(206, 59, 87, 0.2);
     :nth-child(n) {
       min-width: 200px;

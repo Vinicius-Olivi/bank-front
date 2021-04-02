@@ -6,7 +6,7 @@ import Services from "./views/services";
 import About from "./views/about";
 import Layout from "./components/layout/";
 import Details from "./views/details";
-// import Error404 from "./views/errors/404";
+import Error404 from "./views/errors/404";
 
 const Routers = () => {
   return (
@@ -17,8 +17,8 @@ const Routers = () => {
           <Route exact path="/about" component={About} />
           <Route exact path="/details/:id" component={Details} />
 
-          {/* <Route path="*" component={Error404} /> */}
-          <Redirect exact from="*" to="/" />
+          <Route component={Error404} />
+          {/* <Redirect exact from="*" to="/" /> */}
         </Switch>
       </Layout>
     </Router>

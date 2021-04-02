@@ -1,16 +1,8 @@
 import { useState } from "react";
 import { createServiceClient } from "../../services/serv.service";
-import {
-  FormGroup,
-  Label,
-  Input,
-  Button,
-  Row,
-  Col,
-  Nav,
-  Navbar,
-} from "reactstrap";
+import { FormGroup, Input, Button, Row, Col } from "reactstrap";
 import styled from "styled-components";
+import ReactSwal from "../../plugins/swal";
 
 const Client = ({ id, update, isForm }) => {
   const [form, setForm] = useState({});
@@ -30,7 +22,12 @@ const Client = ({ id, update, isForm }) => {
     };
     createServiceClient(id, newForm)
       .then(() => {
-        alert(`Client ${form.name} registered! `);
+        ReactSwal.fire({
+          icon: "success",
+          title: `Client ${form.name} registered! `,
+          showConfirmButton: false,
+          showCloseButton: true,
+        });
         setForm({});
         update(true);
         isForm(false);
