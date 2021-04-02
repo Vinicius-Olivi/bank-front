@@ -41,7 +41,7 @@ const Header = () => {
             <img src="/images/logo.svg" alt="" />
           </div>
         </SNavbarBrand>
-        <NavbarToggler ligth onClick={toggle} />
+        <NavbarToggler onClick={toggle} />
         <Container>
           <SCollapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>

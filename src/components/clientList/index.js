@@ -10,14 +10,12 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  // Tooltip,
 } from "reactstrap";
 import styled from "styled-components";
 import ReactSwal from "../../plugins/swal";
 
 const List = ({ clients, update }) => {
   const { id: id_service } = useParams();
-  // const [tooltip, setTooltip] = useState(false);
 
   const [modal, setModal] = useState({ isOpen: false, data: null });
 
@@ -43,8 +41,6 @@ const List = ({ clients, update }) => {
       data,
     });
   };
-
-  // const toogleTolltip = () => setTooltip(!tooltip);
 
   return (
     <div>
@@ -72,21 +68,11 @@ const List = ({ clients, update }) => {
                       <Button
                         size="sm"
                         color="link"
-                        // id={`tooltip_${v.id}`}
                         className="text-danger"
                         onClick={() => toggleModal(v)}
                       >
                         <FaTrashAlt />
                       </Button>
-
-                      {/* <Tooltip
-                        placement={"bottom"}
-                        isOpen={tooltip}
-                        target={`tooltip_${v.id}`}
-                        toggle={toogleTolltip}
-                      >
-                        Delete Client!
-                      </Tooltip> */}
                     </td>
                   </TableTr>
                 ))}
@@ -95,8 +81,8 @@ const List = ({ clients, update }) => {
           <Modal isOpen={modal.isOpen} toggle={toggleModal}>
             <ModalHeader toggle={toggleModal}>Delete client</ModalHeader>
             <ModalBody>
-              Do you want delete{" "}
-              <strong>{modal?.data?.client_name?.split()[0]}</strong> ?
+              Do you want delete
+              <strong>{modal?.data?.client_name?.split()[0]}</strong>?
             </ModalBody>
             <ModalFooter>
               <Button color="info" onClick={deleteClient}>
@@ -128,7 +114,6 @@ const STable = styled(Table)`
 
 const TableTr = styled.tr`
   th {
-    /* background-color: rgb(66, 20, 95, 0.2); */
     background-color: rgb(206, 59, 87, 0.2);
     :nth-child(n) {
       min-width: 200px;

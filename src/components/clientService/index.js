@@ -39,7 +39,6 @@ const Client = ({ id, update, isForm }) => {
     <FormClient>
       <Col xs="12" sm="12" md="12" lg="12">
         <SFormGroup>
-          {/* <Label for="name">Name:</Label> */}
           <Input
             type="text"
             name="name"

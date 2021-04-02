@@ -11,14 +11,14 @@ import Error404 from "./views/errors/404";
 const Routers = () => {
   return (
     <Router>
-      <Layout name="S/A">
+      <Layout>
         <Switch>
           <Route exact path="/" component={Services} />
           <Route exact path="/about" component={About} />
           <Route exact path="/details/:id" component={Details} />
 
-          <Route component={Error404} />
-          {/* <Redirect exact from="*" to="/" /> */}
+          <Route exact to="/error/404" component={Error404} />
+          <Redirect from="*" to="/error/404" />
         </Switch>
       </Layout>
     </Router>

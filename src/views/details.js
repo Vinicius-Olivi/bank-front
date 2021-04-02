@@ -26,7 +26,7 @@ const Details = (props) => {
       setLoading(false);
       //try error
     } catch (error) {
-      console.log("error catch");
+      console.log("error catch", error);
       history.push("/?error=404");
     }
   }, [id, history]); //something wrong
