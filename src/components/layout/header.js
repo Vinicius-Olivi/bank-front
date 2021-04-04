@@ -13,9 +13,6 @@ import {
   NavbarText,
 } from "reactstrap";
 import styled from "styled-components";
-import "../../assets/css/style.css";
-// import { GiTakeMyMoney } from "react-icons/gi";
-// import { FaJediOrder } from "react-icons/fa";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,18 +101,20 @@ const SCollapse = styled(Collapse)`
   /* background-color: rgb(66, 20, 95, 0.95); */
   padding-left: 10px;
 
-  li {
-    .active {
-      color: #fff !important;
-      padding-left: 8px;
-      background-color: rgb(66, 20, 95, 0) !important;
-      font-weight: 600;
+  @media (max-width: 575px) {
+    li {
+      .active {
+        color: #fff !important;
+        padding-left: 8px;
+        background-color: rgb(66, 20, 95, 0) !important;
+        font-weight: 600;
+      }
     }
-  }
-  a {
-    font-family: "Montserrat", serif;
-    padding: 10px 0px;
-    margin-top: 10px;
+    a {
+      font-family: "Montserrat", serif;
+      padding: 10px 0px;
+      margin-top: 10px;
+    }
   }
 `;
 

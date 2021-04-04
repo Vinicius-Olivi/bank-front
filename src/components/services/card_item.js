@@ -42,7 +42,6 @@ export default CardItem;
 
 const SCard = styled(Card)`
   max-width: 100%;
-  /* background-color: rgb(66, 20, 95, 0.1); */
   background-color: rgb(206, 59, 87, 0.1);
   color: #42145f;
   margin-top: 20px;
@@ -50,7 +49,6 @@ const SCard = styled(Card)`
 
   :hover {
     background-color: rgb(206, 59, 87, 0.3);
-    /* background-color: rgb(66, 20, 95, 0.4); */
     transition: 0.4s;
   }
 `;

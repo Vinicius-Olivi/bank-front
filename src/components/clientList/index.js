@@ -82,7 +82,7 @@ const List = ({ clients, update }) => {
             <ModalHeader toggle={toggleModal}>Delete client</ModalHeader>
             <ModalBody>
               Do you want delete
-              <strong>{modal?.data?.client_name?.split()[0]}</strong>?
+              <strong> {modal?.data?.client_name?.split()[0]}</strong>?
             </ModalBody>
             <ModalFooter>
               <Button color="info" onClick={deleteClient}>
