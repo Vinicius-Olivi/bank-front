@@ -1,8 +1,10 @@
 const Error404 = () => (
   <>
-    <h1>Ops...</h1>
-    <h2>An error happened !</h2>
-    <h4>Page not found</h4>
+    <div>
+      <h1>Ops...</h1>
+      <h3>An error happened !</h3>
+      <h1>Page not found</h1>
+    </div>
   </>
 );
 
