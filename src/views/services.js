@@ -36,9 +36,9 @@ const Services = () => {
 
   return (
     <div>
-      <SJumbotron container-fluid>
+      <SJumbotron>
         <div className="jumbo">
-          <SContainer container-fluid>
+          <SContainer>
             <div className="info_bg">
               <div className="text_bg">
                 <h1>TechnoBank</h1>
